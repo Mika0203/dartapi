@@ -5,8 +5,8 @@ module.exports = {
         this.key = key;
     },
 
-    async GetDisclosure() {
-        return await this.get('https://opendart.fss.or.kr/api/list.json');
+    async GetDisclosure(data) {
+        return await this.get('https://opendart.fss.or.kr/api/list.json', data);
     },
 
     async GetCorpCode() {
