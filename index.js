@@ -1,22 +1,22 @@
 const axios = require("axios");
 
-class OpenDart {
-    constructor(key) {
+module.exports = {
+    SetKey(key) {
         this.key = key;
-    };
+    },
 
-    GetDisclosure = async () => {
+    async GetDisclosure() {
         const data = {
-            pblntf_ty : 'B'
+            pblntf_ty: 'B'
         }
-        return await this.get('https://opendart.fss.or.kr/api/list.json',data);
-    };
+        return await this.get('https://opendart.fss.or.kr/api/list.json', data);
+    },
 
-    GetCorpCode = async () => {
+    async GetCorpCode() {
         return await this.get('https://opendart.fss.or.kr/api/corpCode.xml');
-    }
+    },
 
-    get = async (url, params) => {
+    async get(url, params) {
         console.log(params);
         url += '?crtfc_key=' + this.key;
         Object.keys(params).forEach(key => url += `&${key}=${params[key]}`)
