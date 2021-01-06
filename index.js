@@ -6,10 +6,7 @@ module.exports = {
     },
 
     async GetDisclosure() {
-        const data = {
-            pblntf_ty: 'B'
-        }
-        return await this.get('https://opendart.fss.or.kr/api/list.json', data);
+        return await this.get('https://opendart.fss.or.kr/api/list.json');
     },
 
     async GetCorpCode() {
@@ -17,10 +14,8 @@ module.exports = {
     },
 
     async get(url, params) {
-        console.log(params);
         url += '?crtfc_key=' + this.key;
-        Object.keys(params).forEach(key => url += `&${key}=${params[key]}`)
-        console.log(url);
+        params && Object.keys(params).forEach(key => url += `&${key}=${params[key]}`)
         const ret = await axios.get(url);
         return ret.data;
     }
